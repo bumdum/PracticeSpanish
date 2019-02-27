@@ -1,0 +1,24 @@
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="login-form" [formGroup]="loginForm">
+      <mat-form-field class="full-width">
+         <mat-label>Email</mat-label>
+         <input  matInput  placeholder="Email" name="email" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+         <mat-label>Password</mat-label>
+         <input  matInput  placeholder="Password" name="password" formControlName="password" required>
+      </mat-form-field>
+   </form>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>
+</div>

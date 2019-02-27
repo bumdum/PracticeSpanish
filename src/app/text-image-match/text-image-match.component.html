@@ -1,0 +1,23 @@
+<div class="example-container">
+  <h2>Match words to image</h2>
+  <div id="matchWord" cdkDropList [cdkDropListData]="translations" cdkDropListConnectedTo="matchImage" class="example-list"
+    (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="noReturnPredicate">
+    <div class="example-box" *ngFor="let word of translations" [cdkDragData]="word.id" cdkDrag>{{word.value}}</div>
+  </div>
+</div>
+<div class="example-container">
+<div id="matchImage" cdkDropList [cdkDropListData]="translations" cdkDropListConnectedTo="matchWord"
+  (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="evenPredicate">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <mat-card *ngFor="let word of translations">
+      <mat-card-header>
+        <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">{{word.key}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-sm-image src="../assets/{{word.key}}.jpg" alt="{{word.key}}">
+      <mat-card-content>
+        <div class="example-box" cdkDrag [cdkDragData]="word.id">{{word.id}}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+</div>
