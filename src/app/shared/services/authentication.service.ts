@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    private expiresAt = new Date(2019, 2, 25, 22, 33).getTime();
+    private expiresAt = new Date(2019, 5, 10, 22, 33).getTime();
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -28,6 +28,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
+        console.log(` email: ${username} password: ${password}`);
         return this.http.post<any>(`${environment.api_url}/user/authenticate`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response

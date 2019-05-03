@@ -11,7 +11,7 @@ import { UserData } from './user-data';
 export class MockBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const users: User[] = UserData;
-
+        console.log("MockBackend");
         const authHeader = request.headers.get('Authorization');
         const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
         const roleString = isLoggedIn && authHeader.split('.')[1];

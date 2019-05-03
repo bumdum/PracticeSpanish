@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(` email: ${this.loginForm.controls['email'].value} password: ${this.loginForm.controls['password'].value}`)
-    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
   }
 
 }

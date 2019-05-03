@@ -13,7 +13,7 @@ export class CachingInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // continue if not cachable.
     //if (!isCachable(req)) { return next.handle(req); }
-
+    console.log("cache intercept");
     const cachedResponse = this.cache.get(req);
     return cachedResponse ?
       of(cachedResponse) : this.sendRequest(req, next, this.cache);
@@ -26,7 +26,8 @@ export class CachingInterceptor implements HttpInterceptor {
   
     // No headers allowed in npm search request
     const noHeaderReq = req.clone({ headers: new HttpHeaders() });
-  
+    console.log("sendRequest");
+    console.log(req);
     return next.handle(noHeaderReq).pipe(
       tap(event => {
         // There may be other events besides the response.
