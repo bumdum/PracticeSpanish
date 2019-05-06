@@ -1,4 +1,4 @@
-import { RequestCacheService } from './request-cache.service';
+import { RequestCacheService } from '../request-cache.service';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { of, Observable } from 'rxjs';

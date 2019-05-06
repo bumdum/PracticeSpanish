@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { User, Role } from '../../models';
-import { UserData } from './user-data';
+import { User, Role } from '../../../models';
+import { UserData } from '../../../helpers/mock-data/user-data';
 
 @Injectable({
     providedIn: 'root'
