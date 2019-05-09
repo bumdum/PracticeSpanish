@@ -22,7 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value);
+    this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
+    .subscribe((result) => {
+      console.log(` login in completed!!!! ${JSON.stringify(result)}`);
+    });
   }
 
 }

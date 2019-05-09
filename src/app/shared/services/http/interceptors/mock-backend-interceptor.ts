@@ -11,7 +11,6 @@ import { UserData } from '../../../helpers/mock-data/user-data';
 export class MockBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const users: User[] = UserData;
-        console.log("MockBackend");
         const authHeader = request.headers.get('Authorization');
         const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
         const roleString = isLoggedIn && authHeader.split('.')[1];
@@ -21,7 +20,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
         return of(null).pipe(mergeMap(() => {
 
             // authenticate - public
-            if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
+            if (request.url.endsWith('/user/authenticate') && request.method === 'POST') {
                 const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
                 if (!user) return error('Username or password is incorrect');
                 return ok({
@@ -37,7 +36,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
             }
 
             // get user by id - admin or user (user can only access their own record)
-            if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
+            if (request.url.match(/\/user\/\d+$/) && request.method === 'GET') {
                 if (!isLoggedIn) return unauthorised();
 
                 // get id from request url
