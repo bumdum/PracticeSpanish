@@ -20,7 +20,7 @@
       </a>
       <a  mat-list-item 
         *ngIf="auth.isAuthenticated()"
-        (click)="auth.logout()" type="button">
+        (click)="logout()" type="button">
         <mat-icon class="icon">input</mat-icon>
         <span class="label">LogOut</span>
       </a>  
@@ -66,7 +66,7 @@
               <li>
                   <a
                   *ngIf="auth.isAuthenticated()"
-                  (click)="auth.logout()" type="button"
+                  (click)="logout()" type="button"
                   >
                     <mat-icon class="icon">input</mat-icon>
                     <span class="label">LogOut</span>

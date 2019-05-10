@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'layout-side-nav',
@@ -17,11 +18,17 @@ export class SideNavComponent implements OnInit {
       map(result => result.matches)
     );
 
-    constructor(private breakpointObserver: BreakpointObserver, private auth: AuthenticationService) {
+    constructor(private breakpointObserver: BreakpointObserver, private auth: AuthenticationService
+      , private router: Router) {
       
     }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['login']);
   }
 
 }
