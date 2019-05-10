@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { User } from '..';
 import { environment } from 'src/environments/environment';
+import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/abstract_emitter';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -39,6 +40,9 @@ export class AuthenticationService {
                 }
 
                 return user;
+            }), catchError(err => { 
+                console.log(err);
+                return null;
             }));
     }
 
