@@ -4,7 +4,6 @@
     <form class="login-form" [formGroup]="loginForm">
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
-    <mat-card-subtitle>{{this.errorMessage}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     
@@ -16,7 +15,9 @@
          <mat-label>Password</mat-label>
          <input  matInput  placeholder="Password" name="password" formControlName="password" required>
       </mat-form-field>
-   
+      <mat-error *ngIf="this.errorMessage != ''">
+        {{ this.errorMessage }}
+      </mat-error>
     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
   </mat-card-content>
   <mat-card-actions>
