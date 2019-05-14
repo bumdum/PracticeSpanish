@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, catchError} from 'rxjs/operators';
+import { map, tap} from 'rxjs/operators';
 import { User } from '..';
 import { environment } from 'src/environments/environment';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/abstract_emitter';
@@ -39,9 +39,7 @@ export class AuthenticationService {
                 }
 
                 return user;
-            }), catchError(err => { 
-                throw new err;
-            }));
+            }), tap(null , err => {throw err;}));
     }
 
     logout() {
