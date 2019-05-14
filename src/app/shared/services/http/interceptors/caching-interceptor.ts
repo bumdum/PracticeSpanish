@@ -12,10 +12,17 @@ export class CachingInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // continue if not cachable.
-    //if (!isCachable(req)) { return next.handle(req); }
+    if (!this.isCachable(req)) { return next.handle(req); }
     const cachedResponse = this.cache.get(req);
     return cachedResponse ?
       of(cachedResponse) : this.sendRequest(req, next, this.cache);
+  }
+
+  isCachable(req: HttpRequest<any>) {
+    // Only GET requests are cachable
+    return req.method === 'GET' &&
+      // Only npm package search is cachable in this app
+      -1 < req.url.indexOf('dashboard');
   }
 
   sendRequest(
@@ -25,8 +32,7 @@ export class CachingInterceptor implements HttpInterceptor {
   
     // No headers allowed in npm search request
     const noHeaderReq = req.clone({ headers: new HttpHeaders() });
-    console.log("sendRequest");
-    console.log(req);
+
     return next.handle(noHeaderReq).pipe(
       tap(event => {
         // There may be other events besides the response.

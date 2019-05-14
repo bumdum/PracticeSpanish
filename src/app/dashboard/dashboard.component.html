@@ -1,11 +1,29 @@
 <div class="example-container">
-  <div
+  <!-- <div
     fxLayout="row"
     fxLayout.xs="column"
     fxLayoutWrap
     fxLayoutGap="0.5%"
     fxLayoutAlign="center"
-  >
+  > -->
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color">
+      {{tile.text}}
+    </mat-grid-tile>
+  </mat-grid-list>
+ <mat-chip-list>
+    <mat-chip>Match</mat-chip>
+    <mat-chip>Skills</mat-chip>
+    <mat-chip>Games</mat-chip>
+  </mat-chip-list>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Language Match
+    </mat-expansion-panel-header>
     <mat-card>
       <mat-card-header>
         <mat-card-title>Language Match</mat-card-title>
@@ -13,6 +31,8 @@
       </mat-card-header>
       <mat-card-content> </mat-card-content>
     </mat-card>
+  </mat-expansion-panel>
+    
 
     <mat-card>
       <mat-card-header>
@@ -23,5 +43,5 @@
       </mat-card-header>
       <mat-card-content> </mat-card-content>
     </mat-card>
-  </div>
+  <!-- </div> -->
 </div>
