@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  
+
+  errorMessage = "";
 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)
     .subscribe((result) => {
       this.router.navigateByUrl('/');
-    });
+    }, error => this.errorMessage = error.message);
   }
 
 }

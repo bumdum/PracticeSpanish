@@ -22,7 +22,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
             // authenticate - public
             if (request.url.endsWith('/user/authenticate') && request.method === 'POST') {
                 const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
-                if (!user) return error('Username or password is incorrect');
+                if (!user) return unauthorized('Username or password is incorrect');
                 return ok({
                     id: user.id,
                     username: user.username,
@@ -37,7 +37,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
 
             // get user by id - admin or user (user can only access their own record)
             if (request.url.match(/\/user\/\d+$/) && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
+                if (!isLoggedIn) return forbidden();
 
                 // get id from request url
                 let urlParts = request.url.split('/');
@@ -45,7 +45,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
 
                 // only allow normal users access to their own record
                 const currentUser = users.find(x => x.role === role);
-                if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
+                if (id !== currentUser.id && role !== Role.Admin) return forbidden();
 
                 const user = users.find(x => x.id === id);
                 return ok(user);
@@ -53,7 +53,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
 
             // get all users (admin only)
             if (request.url.endsWith('/users') && request.method === 'GET') {
-                if (role !== Role.Admin) return unauthorised();
+                if (role !== Role.Admin) return forbidden();
                 return ok(users);
             }
 
@@ -71,8 +71,12 @@ export class MockBackendInterceptor implements HttpInterceptor {
             return of(new HttpResponse({ status: 200, body }));
         }
 
-        function unauthorised() {
-            return throwError({ status: 401, error: { message: 'Unauthorised' } });
+        function forbidden() {
+            return throwError({ status: 403, error: { message: 'Forbidden' } });
+        }
+
+        function unauthorized(message) {
+            return throwError({ status: 401, error: { message } });
         }
 
         function error(message) {

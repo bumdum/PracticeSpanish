@@ -40,8 +40,7 @@ export class AuthenticationService {
 
                 return user;
             }), catchError(err => { 
-                console.log(err);
-                return of([]);
+                throw new err;
             }));
     }
 
