@@ -14,6 +14,7 @@
           <span class="label">Home</span>
       </a>
       <a mat-list-item
+        *ngIf="auth.isAuthenticated()"
         routerLink="/dashboard">
         <mat-icon class="icon">dashboard</mat-icon>  
         <span class="label">Dashboard</span>
@@ -58,6 +59,7 @@
               </li>
               <li>
                   <a
+                   *ngIf="auth.isAuthenticated()"
                     routerLink="/dashboard">
                       <mat-icon class="icon">dashboard</mat-icon>
                       <span class="label">Dashboard</span>

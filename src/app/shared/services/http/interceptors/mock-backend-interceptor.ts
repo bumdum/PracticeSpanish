@@ -30,6 +30,7 @@ export class MockBackendInterceptor implements HttpInterceptor {
                     lastName: user.lastName,
                     role: user.role,
                     token: `fake-jwt-token.${user.role}`,
+                    expiresIn: user.expiresIn,
                     email: user.email,
                     settings: user.settings
                 });

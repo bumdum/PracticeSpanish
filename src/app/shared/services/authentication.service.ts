@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, tap} from 'rxjs/operators';
 import { User } from '..';
 import { environment } from 'src/environments/environment';
-import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/abstract_emitter';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -12,7 +12,7 @@ export class AuthenticationService {
     public currentUser: Observable<User>;
     private expiresAt = 0;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private router: Router) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -24,6 +24,10 @@ export class AuthenticationService {
     isAuthenticated(): boolean {
       // Check whether the current time is past the
       // Access Token's expiry time
+      var exp = this.getExpiration();
+      if(exp && Date.now() > exp) {
+        this.logout();
+      }
       return Date.now() < this.getExpiration();
     }
 
@@ -48,6 +52,7 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         localStorage.removeItem("expires_at");
         this.currentUserSubject.next(null);
+        this.router.navigate(['login']);
     }
 
     getExpiration() {
