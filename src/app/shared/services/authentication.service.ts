@@ -10,7 +10,7 @@ import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/abstract_emitter';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    private expiresAt = new Date(2019, 5, 10, 22, 33).getTime();
+    private expiresAt = 0;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -24,7 +24,7 @@ export class AuthenticationService {
     isAuthenticated(): boolean {
       // Check whether the current time is past the
       // Access Token's expiry time
-      return new Date().getTime() < this.expiresAt;
+      return Date.now() < this.getExpiration();
     }
 
     login(username: string, password: string) {
@@ -35,6 +35,7 @@ export class AuthenticationService {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem("expires_at", JSON.stringify(user.expiresIn + Date.now()) );
                     this.currentUserSubject.next(user);
                 }
 
@@ -45,6 +46,13 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem("expires_at");
         this.currentUserSubject.next(null);
     }
+
+    getExpiration() {
+        const expiration = localStorage.getItem("expires_at");
+        const expiresAt = JSON.parse(expiration);
+        return expiresAt;
+    }    
 }

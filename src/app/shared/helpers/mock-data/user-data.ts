@@ -10,6 +10,6 @@ const userSetting: UserSetting[] = [
   ];
 
 export const UserData: User[] = [
-    { id: 1234, role: Role.User, username: 'j@ello.com', password: 'password1', firstName: 'Yum', lastName: 'Yay', email:"j@ello.com", token: null, settings: userSetting.filter(usersetting => usersetting.userid === '1234')},
-    { id: 4321, role: Role.Admin, username: 'sidekick@totheFace.com', password: 'password1', firstName: 'Chuck', lastName: 'Norris', email:"sidekick@totheFace.com", token: null, settings: userSetting.filter(usersetting => usersetting.userid === '4321')}
+    { id: 1234, role: Role.User, username: 'j@ello.com', password: 'password1', firstName: 'Yum', lastName: 'Yay', email:"j@ello.com", token: null, expiresIn: 60000, settings: userSetting.filter(usersetting => usersetting.userid === '1234')},
+    { id: 4321, role: Role.Admin, username: 'sidekick@totheFace.com', password: 'password1', firstName: 'Chuck', lastName: 'Norris', email:"sidekick@totheFace.com", token: null, expiresIn: 60000, settings: userSetting.filter(usersetting => usersetting.userid === '4321')}
 ];

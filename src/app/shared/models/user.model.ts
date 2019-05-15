@@ -10,5 +10,6 @@ export class User {
   lastName: string;
   email: string;
   token?: string;
+  expiresIn?: number;
   settings: UserSetting[];
 }
