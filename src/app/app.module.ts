@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 import { TextImageMatchComponent } from './text-image-match/text-image-match.component';
-import { SideNavComponent, ListErrorsComponent, CustomMaterialModule, httpInterceptorProviders} from './shared';
+import { SideNavComponent, ListErrorsComponent, CustomMaterialModule, httpInterceptorProviders, ButtonExpandtoPageComponent} from './shared';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SideNavComponent,
     ListErrorsComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ButtonExpandtoPageComponent
   ],
   imports: [
     BrowserModule,
