@@ -6,7 +6,7 @@
     fxLayoutGap="0.5%"
     fxLayoutAlign="center"
   > -->
-  <mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-list cols="4" rowHeight="200px">
     <mat-grid-tile
         *ngFor="let tile of tiles"
         [colspan]="tile.cols"
@@ -20,9 +20,9 @@
     <mat-chip>Skills</mat-chip>
     <mat-chip>Games</mat-chip>
   </mat-chip-list>
-  <mat-expansion-panel>
+  <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      Language Match
+      <mat-chip>Match</mat-chip>
     </mat-expansion-panel-header>
     <mat-card>
       <mat-card-header>
