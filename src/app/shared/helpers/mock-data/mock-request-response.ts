@@ -11,9 +11,10 @@ const httpOptions = {
   };
 
 export const GetAllTranslationsRequest = new HttpRequest('GET', 'http://thisisonlyatest.io/api/translation/en-es', httpOptions);
-
 export const GetAllTranslationsResponse = new HttpResponse({ status: 200, body: TranslateData });
 
 export const PostLoginRequest = new HttpRequest('POST', 'http://thisisonlyatest.io/api/user/authenticate', httpOptions);
-
 export const PostLoginResponse = new HttpResponse({ status: 200, body: TranslateData });
+
+export const GetAllUsersRequest = new HttpRequest('GET', 'http://thisisonlyatest.io/api/users', httpOptions);
+export const GetAllUsersResponse = new HttpResponse({ status: 200, body: TranslateData });

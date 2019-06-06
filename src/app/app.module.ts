@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConsoleComponent } from './console/console.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListErrorsComponent,
     LoginComponent,
     DashboardComponent,
-    ButtonExpandtoPageComponent
+    ButtonExpandtoPageComponent,
+    ConsoleComponent
   ],
   imports: [
     BrowserModule,
