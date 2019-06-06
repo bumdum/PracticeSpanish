@@ -6,6 +6,17 @@ import { User } from '..';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
+// firebase auth response
+interface AuthResponseData {
+    kind: string;
+    idToken: string;
+    email: string;
+    refreshToken: string;
+    expiresIn: string;
+    localId: string;
+    registered?: boolean;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
