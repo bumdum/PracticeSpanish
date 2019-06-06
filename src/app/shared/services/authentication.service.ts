@@ -38,6 +38,7 @@ export class AuthenticationService {
       var exp = this.getExpiration();
       if(exp && Date.now() > exp) {
         this.logout();
+        return;
       }
       return Date.now() < this.getExpiration();
     }

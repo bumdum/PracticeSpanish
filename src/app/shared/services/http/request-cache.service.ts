@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 
-const maxAge = 30000;
+const maxAge = 300000;
 @Injectable({
   providedIn: 'root'
 })
