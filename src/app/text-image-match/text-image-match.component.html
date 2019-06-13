@@ -1,11 +1,12 @@
-<div class="example-container">
+<div gdAreas="area1 | area2" gdColumns="20% 80%">
+<div class="example-container" gdArea="area1" gdColumn="1">
   <h2>Match words to image</h2>
   <div id="matchWord" cdkDropList [cdkDropListData]="translations" cdkDropListConnectedTo="matchImage" class="example-list"
     (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="noReturnPredicate">
     <div class="example-box" *ngFor="let word of translations" [cdkDragData]="word.id" cdkDrag>{{word.value}}</div>
   </div>
 </div>
-<div class="example-container">
+<div class="example-container" gdArea="area2" gdGridAlign="center" gdColumn="2">
 <div id="matchImage" cdkDropList [cdkDropListData]="translations" cdkDropListConnectedTo="matchWord"
   (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="evenPredicate">
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-evenly center" fxLayoutAlign.xs="center">
@@ -19,5 +20,6 @@
       </mat-card-content>
     </mat-card>
   </div>
+</div>
 </div>
 </div>
