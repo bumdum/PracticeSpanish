@@ -5,5 +5,5 @@ export const TranslateData: Translate[] = [
     { id: 2, key: 'fire', value: 'fuego' },
     { id: 3, key: 'cake', value: 'pastel' },
     { id: 4, key: 'chef', value: 'cocinero' },
-    { id: 5, key: 'hot tub', value: 'bañera de hidromasaje' },
+    { id: 5, key: 'hottub', value: 'bañera de hidromasaje' },
     { id: 6, key: 'hotel', value: 'hotel' }];

@@ -8,7 +8,7 @@
 <div class="example-container">
 <div id="matchImage" cdkDropList [cdkDropListData]="translations" cdkDropListConnectedTo="matchWord"
   (cdkDropListDropped)="drop($event)" [cdkDropListEnterPredicate]="evenPredicate">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px" fxLayoutAlign="space-evenly center" fxLayoutAlign.xs="center">
     <mat-card *ngFor="let word of translations">
       <mat-card-header>
         <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">{{word.key}}</mat-card-title>
