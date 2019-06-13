@@ -9,8 +9,8 @@ import { ConsoleComponent } from './console/console.component';
 
 const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: DashboardComponent},
-  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent},
-  { path: 'match', canActivate: [AuthGuard], component: TextImageMatchComponent, data: { roles: [Role.User]} },
+  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent, data: {animation: 'DashboardPage'}},
+  { path: 'match', canActivate: [AuthGuard], component: TextImageMatchComponent, data: { roles: [Role.User], animation: 'MatchPage'} },
   { path: 'console', canActivate: [AuthGuard], component: ConsoleComponent, data: { roles: [Role.User]} },
   { path: 'login', component: LoginComponent},
   { path: '**', redirectTo: ''}
