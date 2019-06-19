@@ -22,7 +22,6 @@ const routes: Routes = [
     routes,
     { enableTracing: false } // <-- debugging purposes only
     )],
-  exports: [RouterModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

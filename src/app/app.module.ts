@@ -36,7 +36,6 @@ import { ConsoleComponent } from './console/console.component';
     ReactiveFormsModule
   ],
   providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
