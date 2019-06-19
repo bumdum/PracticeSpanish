@@ -2,7 +2,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { TextImageMatchComponent } from './text-image-match/text-image-match.component';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Role } from './shared';
 import { ConsoleComponent } from './console/console.component';
@@ -22,6 +22,7 @@ const routes: Routes = [
     routes,
     { enableTracing: false } // <-- debugging purposes only
     )],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppRoutingModule { }
