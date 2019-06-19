@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import {
   MatButtonModule,
@@ -53,6 +53,7 @@ import {
     MatGridListModule,
     MatTabsModule,
     MatTableModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CustomMaterialModule {}
